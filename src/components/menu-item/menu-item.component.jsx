@@ -1,11 +1,13 @@
 import React from "react";
 
 import './menu-item.styles.scss';
+import { withRouter } from "react-router-dom";
 
-const MenuItem = ({title, imageUrl,size}) => (                                                // receiving parameters from directory
+const MenuItem = ({title, imageUrl,size,history,linkUrl,match}) => (                                                // receiving parameters from directory
     <div
       
       className={`${size} menu-item`}
+      onClick={() => history.push(`${match.url}${linkUrl}`)}
     >
           <div className="background-image" style={{
             backgroundImage:`url(${imageUrl})`                              // string interpolation of url - $
@@ -17,4 +19,4 @@ const MenuItem = ({title, imageUrl,size}) => (                                  
         </div>
     );
 
-export default MenuItem;
+export default withRouter(MenuItem);
